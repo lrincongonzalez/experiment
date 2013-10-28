@@ -5,7 +5,13 @@ import pygame
 
 #as opposed to LED_control.py, this one allows you to press the arrows to turn on the LEDs
 
-pygame.init()
+result = pygame.init()
+
+if not result[1] == 0:
+    print "PyGame initialization failed"
+    exit(1)
+
+screen = pygame.display.set_mode((320, 240))
 
 ser = serial.Serial('COM15', 115200)
 
@@ -18,7 +24,7 @@ while 1:
             if event.key == pygame.K_LEFT:
                 ser.write(struct.pack('B',1)) #left
                 print "left"
-            if event.key == pygame.K_RETURN:
+            if event.key == pygame.K_DOWN:
                 ser.write(struct.pack('B',3)) #ALL OFF
                 print "ALL OFF"
             if event.key == pygame.K_RIGHT:
