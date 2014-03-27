@@ -8,7 +8,7 @@ time.sleep(5)
 print "ready"
 
 while 1:
-    ri = raw_input("Press 1:Left, 2:FP, 3:Right, 5:OFF, 8:esc")
+    ri = raw_input("Press 1:Left, 2:FP, 3:Right, 4:ON, 5:OFF, 8:esc")
 
     if ri == '1':
         ser.write(struct.pack('B',1)) #left
@@ -22,6 +22,9 @@ while 1:
     if ri == '5':
         ser.write(struct.pack('B',3)) #All OFF
         print "all LED OFF"
+    if ri == '4':
+        ser.write(struct.pack('B',4)) #All OFF
+        print "all LED ON"
     if ri == '8':
         break;
 
